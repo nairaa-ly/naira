@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Absen Perpustakaan SMA Telkom Bandung</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=IM+Fell+English:ital@0;1&family=Special+Elite&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#e9dcc0;--paper:#f6ecd3;--tx:#3a2a1c;--mut:#7a6650;--bd:#8b6b45;--ac:#7b1e1e;--ac2:#f6ecd3;--line:#c9b48a;
+--serif:"IM Fell English","Georgia","Times New Roman",serif;--sc:"IM Fell English SC","Georgia",serif;--type:"Special Elite","Courier New",monospace;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#241a12;--paper:#33261a;--tx:#ecdcb8;--mut:#b09a78;--bd:#a07f52;--ac:#d9a441;--ac2:#241a12;--line:#5a4630}}
+:root[data-theme="dark"]{--bg:#241a12;--paper:#33261a;--tx:#ecdcb8;--mut:#b09a78;--bd:#a07f52;--ac:#d9a441;--ac2:#241a12;--line:#5a4630}
+*{box-sizing:border-box}
+body{margin:0;color:var(--tx);font-family:var(--serif);font-size:17px;line-height:1.5;
+background:radial-gradient(ellipse at top,rgba(255,255,255,.25),transparent 60%),var(--bg)}
+.wrap{max-width:880px;margin:0 auto;padding:24px 16px 48px}
+header{text-align:center;margin-bottom:22px}
+.orn{color:var(--ac);letter-spacing:.5em;font-size:1rem}
+h1{margin:4px 0;font-family:var(--sc);font-weight:400;font-size:clamp(1.6rem,6vw,2.4rem);letter-spacing:.06em;text-transform:uppercase}
+.sub{margin:0;font-style:italic;color:var(--mut)}
+.rule{height:6px;border-top:2px solid var(--bd);border-bottom:1px solid var(--bd);margin:12px auto 0;max-width:420px}
+.card{background:var(--paper);border:2px solid var(--bd);outline:1px solid var(--bd);outline-offset:4px;border-radius:3px;padding:20px;margin:0 4px 28px;box-shadow:0 6px 14px rgba(60,35,10,.22)}
+.card h2{margin:0 0 12px;font-family:var(--sc);font-weight:400;font-size:1.15rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ac);border-bottom:1px solid var(--line);padding-bottom:6px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.full{grid-column:1/-1}
+label{display:block;font-size:.85rem;font-style:italic;color:var(--mut);margin-bottom:2px}
+input,select,button{font:inherit;color:var(--tx)}
+input,select{width:100%;padding:8px 4px;border:0;border-bottom:1.5px dashed var(--bd);background:transparent;font-family:var(--type);font-size:.95rem;border-radius:0}
+input:focus,select:focus{outline:none;border-bottom-style:solid;border-bottom-color:var(--ac);background:rgba(255,255,255,.18)}
+select option,select optgroup{background:var(--paper);color:var(--tx)}
+button{padding:9px 16px;border:1.5px solid var(--bd);border-radius:2px;background:transparent;cursor:pointer;font-family:var(--sc);letter-spacing:.08em;transition:.15s}
+button:hover{background:var(--line)}
+button.pri{background:var(--ac);color:var(--ac2);border-color:var(--ac);font-size:1rem;padding:11px 16px}
+button.pri:hover{filter:brightness(1.15)}
+.bar{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between;margin-bottom:12px}
+.bar strong{font-weight:400;font-style:italic}
+.bar .r{display:flex;gap:8px;flex-wrap:wrap}
+.bar .r input{border:1.5px solid var(--bd);padding:8px;background:rgba(255,255,255,.2)}
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:780px;background-image:repeating-linear-gradient(transparent 0 38px,var(--line) 38px 39px)}
+th,td{padding:8px 10px;height:39px;text-align:left;border-bottom:1px solid var(--line)}
+td{font-family:var(--type);font-size:.92rem}
+th{font-family:var(--sc);font-weight:400;font-size:.85rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ac);border-bottom:2px solid var(--bd)}
+.x{padding:2px 9px;color:var(--ac);border-color:transparent}
+.empty{text-align:center;color:var(--mut);padding:20px;font-style:italic}
+footer{text-align:center;color:var(--mut);font-style:italic;font-size:.85rem}
+.tabs{display:flex;gap:8px;justify-content:center;margin-bottom:24px;flex-wrap:wrap}
+.tab.on{background:var(--ac);color:var(--ac2);border-color:var(--ac)}
+.folder{border:1.5px solid var(--bd);background:rgba(201,180,138,.25);border-radius:2px 14px 2px 2px;margin-bottom:12px}
+.folder summary{cursor:pointer;padding:12px 14px;display:flex;flex-wrap:wrap;gap:4px 12px;align-items:baseline;list-style:none}
+.folder summary::-webkit-details-marker{display:none}
+.folder summary::before{content:"📁";font-size:1.2rem}
+.folder[open] summary::before{content:"📂"}
+.folder .nm{font-family:var(--sc);font-size:1.1rem;letter-spacing:.05em}
+.folder .meta{color:var(--mut);font-style:italic;font-size:.9rem}
+.folder .in{padding:0 14px 14px}
+.folder .in table{min-width:560px}
+.folder .act{margin-top:10px}
+.fbar select{width:auto;border:1.5px solid var(--bd);padding:8px}
+@media (max-width:560px){.grid{grid-template-columns:1fr}.card{padding:16px}}
+@media print{.noprint{display:none!important}body{background:#fff;color:#000}.card{box-shadow:none;outline:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="orn">❦ ❦ ❦</div>
+    <h1>Buku Tamu Perpustakaan</h1>
+    <p class="sub">SMA Telkom Bandung &middot; Daftar Hadir &amp; Peminjaman</p>
+    <div class="rule"></div>
+  </header>
+
+  <nav class="tabs noprint">
+    <button class="tab on" id="t-harian" type="button">Absen Harian</button>
+    <button class="tab" id="t-folder" type="button">Folder Peminjam</button>
+  </nav>
+
+  <div id="v-harian">
+  <form class="card noprint" id="f" onsubmit="return false">
+    <h2>Catat Kunjungan</h2>
+    <div class="grid">
+      <div>
+        <label for="tgl">Tanggal</label>
+        <input type="date" id="tgl">
+      </div>
+      <div>
+        <label for="kelas">Kelas</label>
+        <select id="kelas"></select>
+      </div>
+      <div class="full">
+        <label for="nama">Nama</label>
+        <input id="nama" placeholder="Nama lengkap" autocomplete="off">
+      </div>
+      <div>
+        <label for="buku">Buku yang dipinjam</label>
+        <input id="buku" placeholder="Judul buku (kosongkan jika tidak meminjam)" autocomplete="off">
+      </div>
+      <div>
+        <label for="penulis">Penulis</label>
+        <input id="penulis" placeholder="Nama penulis buku" autocomplete="off">
+      </div>
+      <div class="full">
+        <label for="kembali">Tanggal pengembalian</label>
+        <input type="date" id="kembali">
+      </div>
+      <div class="full"><button class="pri" id="add" type="button">Tulis di Buku Tamu</button></div>
+    </div>
+  </form>
+
+  <div class="card">
+    <h2>Daftar Pengunjung</h2>
+    <div class="bar">
+      <strong id="info"></strong>
+      <div class="r noprint">
+        <input id="cari" placeholder="Cari di arsip…" style="width:180px">
+        <button id="prn" type="button">Cetak PDF</button>
+      </div>
+    </div>
+    <div class="tw">
+      <table>
+        <thead><tr><th>No</th><th>Kelas</th><th>Buku yang Dipinjam</th><th>Penulis</th><th>Tgl Kembali</th><th>Nama</th><th class="noprint"></th></tr></thead>
+        <tbody id="tb"></tbody>
+      </table>
+    </div>
+  </div>
+  </div>
+
+  <div id="v-folder" hidden>
+    <div class="card">
+      <h2>Folder Peminjam</h2>
+      <div class="bar fbar">
+        <strong id="finfo"></strong>
+        <div class="r">
+          <select id="fkelas"></select>
+          <input id="fcari" placeholder="Cari nama…" style="width:160px">
+        </div>
+      </div>
+      <div id="folders"></div>
+    </div>
+  </div>
+  <footer>❦ Selamat membaca ❦</footer>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const K10 = Array.from({length:11}, (_, i) => `10-${i+1}`);
+const jur = t => ["MIGEO","MISO","SOSHUM"].flatMap(j => [1,2,3].map(n => `${t} ${j} ${n}`));
+const K11 = jur("XI"), K12 = jur("XII");
+const grp = (label, arr) => `<optgroup label="${label}">${arr.map(k => `<option>${k}</option>`).join("")}</optgroup>`;
+
+$("kelas").innerHTML =
+  '<option value="">Pilih kelas…</option>' +
+  grp("Kelas 10", K10) + grp("Kelas 11", K11) + grp("Kelas 12", K12);
+
+const today = () => { const d = new Date(); d.setMinutes(d.getMinutes() - d.getTimezoneOffset()); return d.toISOString().slice(0,10); };
+$("tgl").value = today();
+
+let mem = {}; // cadangan jika localStorage tidak tersedia
+const key = () => "absen:" + $("tgl").value;
+function load(){
+  try { return JSON.parse(localStorage.getItem(key()) || "[]"); }
+  catch(e){ return mem[key()] || []; }
+}
+function save(data){
+  try { localStorage.setItem(key(), JSON.stringify(data)); }
+  catch(e){ mem[key()] = data; }
+}
+
+const esc = s => s.replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+function render(){
+  const data = load(), q = $("cari").value.toLowerCase();
+  const rows = data.map((r, i) => ({...r, i})).filter(r => (r.nama + r.kelas + r.buku + (r.penulis || "")).toLowerCase().includes(q));
+  $("tb").innerHTML = rows.length
+    ? rows.map((r, n) => `<tr><td>${n+1}</td><td>${esc(r.kelas)}</td><td>${esc(r.buku) || "-"}</td><td>${esc(r.penulis || "") || "-"}</td><td>${r.kembali ? fmt(r.kembali) : "-"}</td><td>${esc(r.nama)}</td><td class="noprint"><button class="x" data-i="${r.i}" title="Hapus">✕</button></td></tr>`).join("")
+    : '<tr><td colspan="7" class="empty">Belum ada data absen.</td></tr>';
+  $("info").textContent = `${data.length} pengunjung · ${new Date($("tgl").value + "T00:00").toLocaleDateString("id-ID", {weekday:"long", day:"numeric", month:"long", year:"numeric"})}`;
+}
+
+function add(){
+  const kelas = $("kelas").value, nama = $("nama").value.trim(), buku = $("buku").value.trim(), penulis = $("penulis").value.trim(), kembali = $("kembali").value;
+  if(!kelas) return alert("Pilih kelas dulu.");
+  if(!nama) return alert("Nama wajib diisi.");
+  const data = load();
+  data.push({kelas, nama, buku, penulis, kembali});
+  save(data);
+  $("nama").value = ""; $("buku").value = ""; $("penulis").value = ""; $("kembali").value = ""; $("nama").focus();
+  render();
+}
+
+$("add").onclick = add;
+$("f").addEventListener("keydown", e => { if(e.key === "Enter") add(); });
+$("tgl").onchange = render;
+$("cari").oninput = render;
+$("tb").onclick = e => {
+  const b = e.target.closest("button[data-i]");
+  if(!b) return;
+  const data = load(); data.splice(+b.dataset.i, 1); save(data); render();
+};
+
+async function makePdf({title, sub, head, body, foot, name, colStyles}){
+  if(!window.jspdf) return alert("Pembuat PDF belum termuat. Periksa koneksi internet lalu coba lagi.");
+  const doc = new window.jspdf.jsPDF({unit:"mm", format:"a4"});
+  const W = doc.internal.pageSize.getWidth();
+  doc.setFont("times", "bold"); doc.setFontSize(18); doc.setTextColor(58, 42, 28);
+  doc.text(title, W/2, 20, {align:"center"});
+  doc.setFontSize(13); doc.text("SMA Telkom Bandung", W/2, 27, {align:"center"});
+  doc.setDrawColor(139, 107, 69); doc.setLineWidth(.6); doc.line(20, 31, W-20, 31);
+  doc.setLineWidth(.2); doc.line(20, 32.5, W-20, 32.5);
+  doc.setFont("times", "italic"); doc.setFontSize(11);
+  doc.text(sub, W/2, 39, {align:"center"});
+  doc.autoTable({
+    startY: 44, head: [head], body, theme: "grid",
+    styles: {font:"times", fontSize:10, textColor:[58,42,28], lineColor:[201,180,138], lineWidth:.2, cellPadding:2.5},
+    headStyles: {fillColor:[123,30,30], textColor:[246,236,211], fontStyle:"bold"},
+    alternateRowStyles: {fillColor:[246,236,211]},
+    columnStyles: colStyles, margin: {left:20, right:20}
+  });
+  doc.setFont("times", "italic"); doc.setFontSize(10);
+  doc.text(foot, 20, doc.lastAutoTable.finalY + 8);
+  const blob = doc.output("blob");
+  try {
+    const dl = window.claude ? await claude.use("downloads") : null;
+    if(dl){ await dl.save({filename:name, data:blob}); return; }
+  } catch(e){ if(e && e.code === "declined") return; }
+  // cadangan untuk dipakai di VS Code / browser biasa
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob); a.download = name; a.click();
+}
+
+$("prn").onclick = () => {
+  const data = load();
+  if(!data.length) return alert("Belum ada data absen untuk dicetak.");
+  const tgl = $("tgl").value;
+  makePdf({
+    title: "BUKU TAMU PERPUSTAKAAN",
+    sub: new Date(tgl + "T00:00").toLocaleDateString("id-ID", {weekday:"long", day:"numeric", month:"long", year:"numeric"}),
+    head: ["No", "Kelas", "Buku yang Dipinjam", "Penulis", "Tgl Kembali", "Nama"],
+    body: data.map((r, i) => [i+1, r.kelas, r.buku || "-", r.penulis || "-", r.kembali ? fmt(r.kembali) : "-", r.nama]),
+    foot: `Total pengunjung: ${data.length}`,
+    name: `absen-perpustakaan-${tgl}.pdf`,
+    colStyles: {0:{cellWidth:9, halign:"center"}, 1:{cellWidth:27}, 4:{cellWidth:26}}
+  });
+};
+
+/* ===== Folder peminjam ===== */
+const fmt = d => new Date(d + "T00:00").toLocaleDateString("id-ID", {day:"numeric", month:"short", year:"numeric"});
+function allDays(){
+  const out = {};
+  try {
+    for(let i = 0; i < localStorage.length; i++){
+      const k = localStorage.key(i);
+      if(k.startsWith("absen:")) out[k.slice(6)] = JSON.parse(localStorage.getItem(k) || "[]");
+    }
+  } catch(e){}
+  for(const k in mem) if(k.startsWith("absen:")) out[k.slice(6)] = mem[k];
+  return out;
+}
+function getFolders(){
+  const days = allDays(), map = {};
+  Object.keys(days).sort().forEach(d => days[d].forEach(r => {
+    const id = r.nama.trim().toLowerCase() + "|" + r.kelas;
+    (map[id] = map[id] || {id, nama:r.nama.trim(), kelas:r.kelas, rows:[]}).rows.push({tgl:d, buku:r.buku || "", penulis:r.penulis || "", kembali:r.kembali || ""});
+  }));
+  return Object.values(map).sort((a, b) => a.nama.localeCompare(b.nama));
+}
+$("fkelas").innerHTML = '<option value="">Semua kelas</option>' + grp("Kelas 10", K10) + grp("Kelas 11", K11) + grp("Kelas 12", K12);
+
+function renderFolders(){
+  const q = $("fcari").value.toLowerCase(), kf = $("fkelas").value;
+  const list = getFolders().filter(f => f.nama.toLowerCase().includes(q) && (!kf || f.kelas === kf));
+  $("finfo").textContent = `${list.length} folder`;
+  $("folders").innerHTML = list.length ? list.map(f => {
+    const n = f.rows.filter(r => r.buku).length;
+    return `<details class="folder"><summary><span class="nm">${esc(f.nama)}</span><span class="meta">${esc(f.kelas)} · ${f.rows.length} kunjungan · ${n} buku</span></summary>
+      <div class="in"><div class="tw"><table><thead><tr><th>Tanggal</th><th>Buku</th><th>Penulis</th><th>Kembali</th></tr></thead><tbody>
+      ${f.rows.map(r => `<tr><td>${fmt(r.tgl)}</td><td>${esc(r.buku) || "-"}</td><td>${esc(r.penulis) || "-"}</td><td>${r.kembali ? fmt(r.kembali) : "-"}</td></tr>`).join("")}
+      </tbody></table></div>
+      <button class="act" type="button" data-f="${esc(f.id)}">Cetak PDF Folder</button></div></details>`;
+  }).join("") : '<div class="empty">Belum ada folder. Folder dibuat otomatis saat ada kunjungan yang dicatat.</div>';
+}
+
+$("folders").onclick = e => {
+  const b = e.target.closest("button[data-f]");
+  if(!b) return;
+  const f = getFolders().find(x => x.id === b.dataset.f);
+  if(!f) return;
+  const n = f.rows.filter(r => r.buku).length;
+  makePdf({
+    title: "FOLDER PEMINJAM",
+    sub: `${f.nama} · ${f.kelas}`,
+    head: ["No", "Tanggal Pinjam", "Buku yang Dipinjam", "Penulis", "Tgl Kembali"],
+    body: f.rows.map((r, i) => [i+1, fmt(r.tgl), r.buku || "-", r.penulis || "-", r.kembali ? fmt(r.kembali) : "-"]),
+    foot: `Total kunjungan: ${f.rows.length}  ·  Buku dipinjam: ${n}`,
+    name: `folder-${f.nama.replace(/\s+/g, "-").toLowerCase()}-${f.kelas.replace(/\s+/g, "-").toLowerCase()}.pdf`,
+    colStyles: {0:{cellWidth:9, halign:"center"}, 1:{cellWidth:28}, 4:{cellWidth:28}}
+  });
+};
+$("fcari").oninput = renderFolders;
+$("fkelas").onchange = renderFolders;
+
+function tab(v){
+  $("v-harian").hidden = v !== "harian";
+  $("v-folder").hidden = v !== "folder";
+  $("t-harian").classList.toggle("on", v === "harian");
+  $("t-folder").classList.toggle("on", v === "folder");
+  if(v === "folder") renderFolders();
+}
+$("t-harian").onclick = () => tab("harian");
+$("t-folder").onclick = () => tab("folder");
+
+render();
+</script>
+</body>
+</html>
